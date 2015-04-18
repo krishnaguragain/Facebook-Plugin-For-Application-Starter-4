@@ -16,7 +16,7 @@ class Account_controller extends Base_Controller {
     }
 
 
-    public function index() {
+        public function index() {
          $this->load->library('facebook');
         $this->load->helper('url');
         $data['user'] = array();
@@ -30,14 +30,12 @@ class Account_controller extends Base_Controller {
                 unset($user['data']['permissions']);
                 $data['user'] = $user['data'];
             }
+             $this->template->set('user',$user);
 
         }
-
         $this->template
             ->prepend_title('Facebook Login')
             ->set_canonical_url(site_url())
-            ->set('user', $user)
-            ->set('user', $user)
             ->build('facebook');
     }
 
